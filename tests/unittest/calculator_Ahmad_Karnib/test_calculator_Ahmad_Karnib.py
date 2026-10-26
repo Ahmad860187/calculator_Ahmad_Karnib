@@ -5,7 +5,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../src/main/python')))
 
 import unittest
-from calculator_Ahmad_Karnib import add, subtract, multiply, divide
+from calculator_Ahmad_Karnib import add, subtract, multiply, divide, modulus, power, square_root
 
 
 class TestCalculator(unittest.TestCase):
@@ -22,6 +22,23 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(divide(10, 2), 5)
         with self.assertRaises(ValueError):
             divide(10, 0)
+
+    def test_modulus(self):
+        self.assertEqual(modulus(10, 3), 1)
+        self.assertEqual(modulus(9, 3), 0)
+        with self.assertRaises(ValueError):
+            modulus(5, 0)
+
+    def test_power(self):
+        self.assertEqual(power(2, 5), 32)
+        self.assertEqual(power(7, 0), 1)
+        self.assertEqual(power(4, 0.5), 2)
+
+    def test_square_root(self):
+        self.assertEqual(square_root(25), 5)
+        self.assertEqual(square_root(0), 0)
+        with self.assertRaises(ValueError):
+            square_root(-4)
 
 
 if __name__ == '__main__':
